@@ -107,7 +107,7 @@ function App() {
                 <Paper elevation={1} sx={{ p: 2 }}>
                   {((price.close / price.open) * price.initOpen - price.initOpen) /
                     ((price.open / price.stop) * price.initOpen - price.initOpen) <
-                    0 && <Alert severity="error">Low ration, You should not open a position</Alert>}
+                    1.05 && <Alert severity="error">Low ration, You should not open a position</Alert>}
 
                   <Box display={'flex'}>
                     <Box width={'100%'}>
