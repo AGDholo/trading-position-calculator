@@ -146,7 +146,7 @@ function App() {
                         <Box>
                           <Box>
                             <TextField
-                              label={'Position'}
+                              label={'Principal'}
                               value={price.initOpen}
                               onChange={handleChange('initOpen')}
                               inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
