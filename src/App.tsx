@@ -59,6 +59,7 @@ interface priceState {
   stop: number
   initOpen: number
   initLeverage: number
+  initStop: number
 }
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
     stop: 0,
     initOpen: 0,
     initLeverage: 0,
+    initStop: 0,
   })
 
   const localInitOpen = localStorage.getItem('initOpen')
@@ -91,7 +93,7 @@ function App() {
   }
 
   const fractal = (num: number) => {
-    if (parseFloat(num.toFixed(2)) <= 1) {
+    if (num <= 1.01) {
       return num
     }
     const res = num - Math.trunc(num)
@@ -164,7 +166,7 @@ function App() {
                             />
                           </Box>
 
-                          <Box mt={2}>
+                          <Box my={2}>
                             <TextField
                               label={'Leverage'}
                               inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
