@@ -90,6 +90,16 @@ function App() {
     if (prop === 'initLeverage') localStorage.setItem('initLeverage', String(value))
   }
 
+  const fractal = (num: number) => {
+    if (num >= 1.1) {
+      const res = num - Math.trunc(num)
+      return 1 / (res * 100)
+    } else {
+      const res = num - Math.trunc(num)
+      return (10 - res * 100) / 10
+    }
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -117,9 +127,9 @@ function App() {
                             <Typography variant={'h6'}>Open Position:</Typography>
                             <Typography variant={'h2'} sx={{ ml: 2 }} fontWeight={'bolder'}>
                               $
-                              {((price.initOpen / price.initLeverage) * ((10 - price.open / price.stop) / 10)).toFixed(
-                                0
-                              )}
+                              {price.open / price.stop > 1
+                                ? ((price.initOpen / price.initLeverage) * fractal(price.open / price.stop)).toFixed(0)
+                                : (price.initOpen / price.initLeverage).toFixed(0)}
                             </Typography>
                           </Box>
                           <Box>
