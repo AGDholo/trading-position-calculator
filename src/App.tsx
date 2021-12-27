@@ -91,13 +91,11 @@ function App() {
   }
 
   const fractal = (num: number) => {
-    if (num >= 1.1) {
-      const res = num - Math.trunc(num)
-      return 1 / (res * 100)
-    } else {
-      const res = num - Math.trunc(num)
-      return (10 - res * 100) / 10
+    if (parseFloat(num.toFixed(2)) <= 1) {
+      return num
     }
+    const res = num - Math.trunc(num)
+    return 1 / (res * 100)
   }
 
   return (
